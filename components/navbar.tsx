@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useAuth } from "@/contexts/auth-context"
 import { Button } from "@/components/ui/button"
-import { Leaf, LogOut } from "lucide-react"
+import { TrendingUp, LogOut } from "lucide-react"
 
 export function Navbar() {
   const { user, logout, isAuthenticated } = useAuth()
@@ -32,8 +32,8 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-              <Leaf className="h-6 w-6 text-primary-foreground" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
+              <TrendingUp className="h-6 w-6 text-primary-foreground" />
             </div>
             <span className="text-xl font-semibold text-foreground">EcoTrade</span>
           </Link>

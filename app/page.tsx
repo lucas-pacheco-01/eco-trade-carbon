@@ -1,24 +1,30 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Navbar } from "@/components/navbar"
-import { Leaf, Shield, TrendingUp, Users } from "lucide-react"
+import { TrendingUp, Shield, Zap, Users } from "lucide-react"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section
+        className="relative overflow-hidden bg-cover bg-center py-20"
+        style={{ backgroundImage: "url('/images/hero-background.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-6 inline-flex items-center justify-center rounded-full bg-primary/10 p-3">
-              <Leaf className="h-12 w-12 text-primary" />
+              <TrendingUp className="h-12 w-12 text-primary" />
             </div>
-            <h1 className="mb-6 text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
+            <h1 className="mb-6 text-balance text-5xl font-bold tracking-tight text-white sm:text-6xl">
               Negocie Créditos de Carbono com Confiança
             </h1>
-            <p className="mx-auto mb-8 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
+            <p className="mx-auto mb-8 max-w-2xl text-pretty text-lg leading-relaxed text-gray-200">
               A EcoTrade conecta produtores rurais com empresas que buscam compensar sua pegada de carbono. Nossa
               plataforma garante transparência, segurança e créditos de carbono verificados para um futuro sustentável.
             </p>
@@ -29,7 +35,11 @@ export default function HomePage() {
                 </Button>
               </Link>
               <Link href="/transactions">
-                <Button size="lg" variant="outline" className="text-base bg-transparent">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-base bg-white/20 text-white border-white hover:bg-white/30"
+                >
                   Ver Transações
                 </Button>
               </Link>
@@ -38,8 +48,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section
+        className="relative py-20 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/features-background.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-white/90"></div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-3xl font-bold text-foreground">Como Funciona a EcoTrade</h2>
             <p className="mx-auto max-w-2xl text-pretty text-muted-foreground">
@@ -63,7 +77,7 @@ export default function HomePage() {
             <Card>
               <CardContent className="pt-6">
                 <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 p-3">
-                  <Leaf className="h-6 w-6 text-primary" />
+                  <TrendingUp className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="mb-2 text-xl font-semibold text-card-foreground">Gerar Créditos</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
@@ -87,7 +101,7 @@ export default function HomePage() {
             <Card>
               <CardContent className="pt-6">
                 <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 p-3">
-                  <TrendingUp className="h-6 w-6 text-primary" />
+                  <Zap className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="mb-2 text-xl font-semibold text-card-foreground">Negociar</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
@@ -99,10 +113,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-primary/5 py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-balance text-3xl font-bold text-foreground">Pronto para Fazer a Diferença?</h2>
-          <p className="mb-8 text-pretty text-lg text-muted-foreground">
+      <section
+        className="relative py-20 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/cta-background.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-balance text-3xl font-bold text-white">Pronto para Fazer a Diferença?</h2>
+          <p className="mb-8 text-pretty text-lg text-gray-200">
             Junte-se à EcoTrade hoje e faça parte do futuro sustentável
           </p>
           <Link href="/register">

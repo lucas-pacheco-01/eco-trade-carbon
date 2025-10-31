@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Navbar } from "@/components/navbar"
-import { Leaf } from "lucide-react"
+import { TrendingUp } from "lucide-react"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -61,12 +61,16 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12">
-        <Card className="w-full max-w-md">
+      <div
+        className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/login-background.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
+        <Card className="w-full max-w-md relative z-10">
           <CardHeader className="text-center">
             <div className="mb-4 flex justify-center">
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
-                <Leaf className="h-7 w-7 text-primary-foreground" />
+                <TrendingUp className="h-7 w-7 text-primary-foreground" />
               </div>
             </div>
             <CardTitle className="text-2xl">Bem-vindo de Volta</CardTitle>
