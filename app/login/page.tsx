@@ -1,69 +1,75 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { useAuth } from "@/contexts/auth-context"
-import { getUserByEmail } from "@/lib/storage"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Navbar } from "@/components/navbar"
-import { TrendingUp } from "lucide-react"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useAuth } from "@/contexts/auth-context";
+import { getUserByEmail } from "@/lib/storage";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Navbar } from "@/components/navbar";
+import { TrendingUp } from "lucide-react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const { login } = useAuth()
-  const router = useRouter()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
-    setIsLoading(true)
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const user = getUserByEmail(email)
+    const user = getUserByEmail(email);
 
     if (!user) {
-      setError("Usuário não encontrado")
-      setIsLoading(false)
-      return
+      setError("Usuário não encontrado");
+      setIsLoading(false);
+      return;
     }
 
     if (user.password !== password) {
-      setError("Senha inválida")
-      setIsLoading(false)
-      return
+      setError("Senha inválida");
+      setIsLoading(false);
+      return;
     }
 
-    login(user.id)
+    login(user.id);
 
     switch (user.role) {
       case "producer":
-        router.push("/dashboard/producer")
-        break
+        router.push("/dashboard/producer");
+        break;
       case "company":
-        router.push("/dashboard/company")
-        break
+        router.push("/dashboard/company");
+        break;
       case "admin":
-        router.push("/dashboard/admin")
-        break
+        router.push("/dashboard/admin");
+        break;
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <div
         className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/login-background.jpg')" }}
+        style={{ backgroundImage: "url('/images/folhas-bg-login.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/40"></div>
         <Card className="w-full max-w-md relative z-10">
@@ -102,7 +108,11 @@ export default function LoginPage() {
                 />
               </div>
 
-              {error && <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">{error}</div>}
+              {error && (
+                <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                  {error}
+                </div>
+              )}
 
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? "Entrando..." : "Entrar"}
@@ -124,5 +134,5 @@ export default function LoginPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
